@@ -3,7 +3,7 @@ import random
 import logging
 import numpy as np
 import shutil
-import toml
+import tomllib
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -28,7 +28,8 @@ set_seed(57)
 
 # -------------------------
 # config.toml を読み込む
-config = toml.load("config.toml")
+with open("config.toml", "rb") as f:  # `rb` モードで開く必要がある
+    config = tomllib.load(f)
 
 num_classes = config["hyperparameters"]["num_classes"]
 batch_size = config["hyperparameters"]["batch_size"]
@@ -43,7 +44,6 @@ gpu = config["gpu"]["gpu_index"]
 # 時間を記録
 now = datetime.now()
 formatted_time = now.strftime("%Y%m%dT%H%M%S")
-print(formatted_time)
 result_dir = os.path.join(result_dir, formatted_time)
 
 # -------------------------
@@ -60,7 +60,7 @@ logging.basicConfig(
     level=logging.INFO
 )
 
-logging.info("実験開始: {}".format(formatted_time))
+logging.info("訓練開始: {}".format(formatted_time))
 logging.info(f"データディレクトリ: {data_dir}")
 logging.info(f"結果保存ディレクトリ: {result_dir}")
 logging.info(f"使用GPU: {gpu}")
@@ -182,7 +182,7 @@ for epoch in range(epochs):
 
             if epoch_acc > best_acc:
                 best_acc = epoch_acc
-                torch.save(model.state_dict(), f'{result_dir}/best_model.pth')
+                torch.save(model.state_dict(), f'{result_dir}/vgg_best_model.pth')
                 logging.info(f"新しいベストモデルを保存: Acc {best_acc:.4f}")
                 print("Best model saved!")
 
