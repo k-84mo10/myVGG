@@ -6,7 +6,7 @@ img_size = 224
 learning_rate = 0.001
 
 [directory]
-data_dir = 'thai/data/mydest/mydesk_dataset'    
+data_dir = 'thai/data/mydesk/mydesk_dataset'    
 result_dir = 'thai/result'
 
 [gpu]
