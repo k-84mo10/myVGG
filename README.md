@@ -19,7 +19,11 @@ pip install -m requirements.txt
 ```sh
 ln -s <元のpath> <このディレクトリのpath>
 ```
-次に、config.tomlにハイパーパラメータやデータセットのpathを記入してください。  
+次に、model_trainingフォルダに移動してください。
+```
+cd model_training
+```
+config.tomlにハイパーパラメータやデータセットのpathを記入してください。  
 以下は例です。
 ```toml
 [hyperparameters]
@@ -42,16 +46,20 @@ python3 vgg.py
 ```
 学習したモデル・各種ログなどは`result_dir`内に生成されます。
 ### モデルの可視化
-作成したモデルの可視化は`grad_cam_vgg.py`で行います。  
-まず、`grad_cam_vgg.py`のsettingを入力してください。
-```py
-#--------------------------------------------------------------------------------------#
-# setting
+作成したモデルの可視化は`model_visualization`で行います。 
+```sh
+cd model_visualization
+``` 
+config.tomlを設定してください。
+```toml
+[hyperparameters]
 num_classes = 4
-result_dir = "thai/result/20250301T141823"
+
+[path]
+result_dir = "../thai/result/20250301T141823"
 model_name = "best_model.pth"
-img_path = "thai/data/mydesk/mydesk_raw/run3/20250228T165549_0011.jpg"
-#--------------------------------------------------------------------------------------#
+img_path = "../thai/data/mydesk/mydesk_raw/run3/20250228T165549_0011.jpg"
+
 ```
 `result_dir`はモデルが入っているフォルダの名前、`model_name`はモデルの名前を書いてください。  
 `img_path`は可視化したい画像のpathです。  
