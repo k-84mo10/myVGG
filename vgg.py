@@ -36,6 +36,8 @@ learning_rate = config["hyperparameters"]["learning_rate"]
 data_dir = config["directory"]["data_dir"]   
 result_dir = config["directory"]["result_dir"]   
 
+gpu = config["gpu"]["gpu_index"]
+
 # -------------------------
 # データ前処理（データ拡張と正規化）
 data_transforms = {
@@ -69,7 +71,7 @@ dataloaders = {
 
 # -------------------------
 # デバイス設定（GPUがあれば利用）
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+device = torch.device(f"cuda:{int(gpu)}" if torch.cuda.is_available() else "cpu")
 
 # -------------------------
 # 事前学習済み VGG16 モデルの読み込みとカスタマイズ
