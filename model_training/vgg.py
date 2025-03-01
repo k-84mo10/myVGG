@@ -214,7 +214,7 @@ plt.show()
 
 # -------------------------
 # 最終モデルの保存
-torch.save(model.state_dict(), f'{result_dir}/final_model.pth')
+torch.save(model.state_dict(), f'{result_dir}/vgg_final_model.pth')
 logging.info("最終モデルを保存")
 
 logging.info("学習完了")
