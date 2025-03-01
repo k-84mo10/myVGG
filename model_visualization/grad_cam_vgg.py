@@ -1,4 +1,5 @@
 import os
+import tomllib
 import torch
 import torch.nn.functional as F
 from torchvision import models, transforms
@@ -8,13 +9,15 @@ import numpy as np
 import cv2
 import matplotlib.pyplot as plt
 
-#--------------------------------------------------------------------------------------#
-# setting
-num_classes = 4
-result_dir = "thai/result/20250301T141823"
-model_name = "best_model.pth"
-img_path = "thai/data/mydesk/mydesk_raw/run3/20250228T165549_0011.jpg"
-#--------------------------------------------------------------------------------------#
+# -------------------------
+# config.toml を読み込む
+with open("config.toml", "rb") as f:  # `rb` モードで開く必要がある
+    config = tomllib.load(f)
+
+num_classes = config["hyperparameters"]["num_classes"]
+result_dir = config["path"]["result_dir"]
+model_name = config["path"]["model_name"]
+img_path = config["path"]["img_path"]
 
 # Grad-CAMクラスの定義
 class GradCAM:
