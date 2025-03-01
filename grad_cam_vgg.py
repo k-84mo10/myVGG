@@ -8,11 +8,13 @@ import numpy as np
 import cv2
 import matplotlib.pyplot as plt
 
-# path
+#--------------------------------------------------------------------------------------#
+# setting
 num_classes = 4
 result_dir = "thai/result/20250301T141823"
 model_name = "best_model.pth"
 img_path = "thai/data/mydesk/mydesk_raw/run3/20250228T165549_0011.jpg"
+#--------------------------------------------------------------------------------------#
 
 # Grad-CAMクラスの定義
 class GradCAM:
