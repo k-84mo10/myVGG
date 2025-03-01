@@ -1,3 +1,4 @@
+import os
 import torch
 import torch.nn.functional as F
 from torchvision import models, transforms
@@ -6,6 +7,12 @@ from PIL import Image
 import numpy as np
 import cv2
 import matplotlib.pyplot as plt
+
+# path
+num_classes = 4
+result_dir = "thai/result/20250301T141823"
+model_name = "best_model.pth"
+img_path = "thai/data/mydesk/mydesk_raw/run3/20250228T165549_0011.jpg"
 
 # Grad-CAMクラスの定義
 class GradCAM:
@@ -64,11 +71,10 @@ class GradCAM:
 # 例：VGG16をベースにファインチューニングしている場合
 model = vgg16(weights=VGG16_Weights.DEFAULT)
 # 例として分類クラス数が10の場合（学習時の設定に合わせる）
-num_classes = 4
 model.classifier[6] = torch.nn.Linear(4096, num_classes)
+model_path = os.path.join(result_dir, model_name)
 
 # ファインチューニング済みモデルの重みをロード
-model_path = "thai/best_model.pth"
 model.load_state_dict(torch.load(model_path, map_location=torch.device("cpu")))
 model.eval()
 
@@ -89,7 +95,6 @@ preprocess = transforms.Compose([
 ])
 
 # 画像の読み込み（適宜パスを変更してください）
-img_path = "thai/mydesk_raw/run3/20250228T165549_0011.jpg"
 img = Image.open(img_path).convert("RGB")
 input_tensor = preprocess(img).unsqueeze(0)  # バッチ次元を追加
 
@@ -137,7 +142,8 @@ plt.show()
 heatmap_bgr = cv2.cvtColor(heatmap, cv2.COLOR_RGB2BGR)
 overlay_bgr = cv2.cvtColor(np.uint8(overlay), cv2.COLOR_RGB2BGR)
 
-cv2.imwrite("heatmap.jpg", heatmap_bgr)
-cv2.imwrite("overlay.jpg", overlay_bgr)
+cv2.imwrite(f"{result_dir}/input.jpg", heatmap_bgr)
+cv2.imwrite(f"{result_dir}/heatmap.jpg", heatmap_bgr)
+cv2.imwrite(f"{result_dir}/overlay.jpg", overlay_bgr)
 
 print("HeatmapとOverlayがそれぞれ 'heatmap.jpg' と 'overlay.jpg' として保存されました。")
