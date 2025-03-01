@@ -2,6 +2,6 @@
 num_classes = 4
 
 [path]
-result_dir = "../thai/result/20250301T141823"
-model_name = "best_model.pth"
+result_dir = "../thai/result/20250302T080904"
+model_name = "vgg_best_model.pth"
 img_path = "../thai/data/mydesk/mydesk_raw/run3/20250228T165549_0011.jpg"
