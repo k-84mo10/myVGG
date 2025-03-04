@@ -5,3 +5,5 @@ matplotlib == 3.10.1
 tqdm == 4.62.3
 opencv-python==4.11.0.86 
 pillow==11.1.0
+scikit-learn == 1.6.1
+seaborn == 0.13.2

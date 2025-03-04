@@ -1,0 +1,7 @@
+[path]
+result_dir = "../thai/result/20250302T090730"
+model_name = "vgg_best_model.pth"
+dataset_path = "../thai/data/mydesk/mydesk_dataset/val"
+
+[gpu]
+gpu_index = 1
