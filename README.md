@@ -13,7 +13,7 @@ pip install -m requirements.txt
 ```
 
 ## How to Use
-このリポジトリには「モデルの学習」と「モデルの可視化」の二つの役割があります。
+このリポジトリには「モデルの学習」と「モデルの可視化」、「モデルのテスト」の3つの役割があります。
 ### モデルの学習
 まず、シンボリックリンクなどを用いて、datasetのpathをこのディレクトリに置いてください。
 ```sh
@@ -68,3 +68,25 @@ img_path = "../thai/data/mydesk/mydesk_raw/run3/20250228T165549_0011.jpg"
 python3 grad_cam_vgg.py
 ```
 `input.jpg`・`heatmp.jpg`・`overlay.jpg`の3枚が`result_dir`内に生成されます。
+### モデルのテスト
+作成したモデルの可視化は`model_test`で行います。
+```sh
+cd model_test
+``` 
+config.tomlを設定してください。
+```toml
+[path]
+result_dir = "../thai/result/20250302T090730"
+model_name = "vgg_best_model.pth"
+dataset_path = "../thai/data/mydesk/mydesk_dataset/val"
+
+[gpu]
+gpu_index = 1
+```
+`result_dir`はモデルが入っているフォルダの名前、`model_name`はモデルの名前を書いてください。  
+`dataset_path`はテストデータセットのパスを入れてください。  
+次に以下のコード次に、以下のコードを動かすとconfusion matrixが生成されます。
+```sh
+python3 confusion_matrix.py
+```
+`confusion_matrix_normalized.png`が`result_dir`内に生成されます。
