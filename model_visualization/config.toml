@@ -1,7 +1,7 @@
 [hyperparameters]
-num_classes = 4
+num_classes = 8
 
 [path]
-result_dir = "../thai/result/20250302T080904"
+result_dir = "../dataset0b/result/20250329T153829"
 model_name = "vgg_best_model.pth"
-img_path = "../thai/data/mydesk/mydesk_raw/run3/20250228T165549_0011.jpg"
+img_path = "../dataset0b/val/0100/A31_20240523T090509_0000.jpg"
