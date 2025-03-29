@@ -1,8 +1,11 @@
 # シンボリックリンク
-thai
+dataset0b
 
 # 仮想環境
 myenv/
 
 # 画像
 *.png
+
+# nohup
+nohup.out

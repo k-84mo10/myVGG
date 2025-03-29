@@ -1,13 +1,13 @@
 [hyperparameters]
-num_classes = 4        # クラス数（例: 4クラス分類）
+num_classes = 8        # クラス数（例: 4クラス分類）
 batch_size = 32
-epochs = 10
+epochs = 25
 img_size = 224
 learning_rate = 0.001
 
 [directory]
-data_dir = '../thai/data/mydesk/mydesk_dataset'    
-result_dir = '../thai/result'
+data_dir = '../dataset0b/'    
+result_dir = '../dataset0b/result'
 
 [gpu]
 gpu_index = 1
