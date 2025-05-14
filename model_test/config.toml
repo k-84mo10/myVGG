@@ -1,7 +1,7 @@
 [path]
-result_dir = "../thai/result/20250302T090730"
+result_dir = "../LPA-BDD-CGAN/result/dataset_live/20250514T210843"
 model_name = "vgg_best_model.pth"
-dataset_path = "../thai/data/mydesk/mydesk_dataset/val"
+dataset_path = "../LPA-BDD-CGAN/dataset/dataset_live_for_test/nochange"
 
 [gpu]
 gpu_index = 1

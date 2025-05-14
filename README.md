@@ -9,7 +9,7 @@ source myenv/bin/activate
 ```
 次に、必要なライブラリをインストールしていきます。
 ```sh
-pip install -m requirements.txt
+pip install -r requirements.txt
 ```
 
 ## How to Use
