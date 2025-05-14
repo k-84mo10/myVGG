@@ -57,6 +57,13 @@ with torch.no_grad():
         all_preds.extend(preds.cpu().numpy())
         all_labels.extend(labels.cpu().numpy())
 
+# 精度の計算
+correct = np.sum(np.array(all_preds) == np.array(all_labels))
+total = len(all_labels)
+accuracy = correct / total
+
+print(f"Accuracy: {accuracy:.4f} ({correct}/{total})")
+
 # クラスごとのデータ数を確認
 from collections import Counter
 print("Label distribution in test dataset:", Counter(all_labels))
@@ -75,7 +82,8 @@ sns.heatmap(conf_matrix_norm, annot=True, fmt=".2f", cmap="Blues",
 
 plt.xlabel("Predicted Label")
 plt.ylabel("True Label")
-plt.title("Confusion Matrix (Normalized)")
+plt.title(f"Confusion Matrix (Normalized)\nAccuracy: {accuracy:.2%}") 
+
 plt.savefig(f"{result_dir}/confusion_matrix_normalized.png", dpi=300, bbox_inches='tight')  # 画像として保存
 plt.close()  # プロットを閉じる
 

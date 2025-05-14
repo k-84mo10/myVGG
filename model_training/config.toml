@@ -1,13 +1,13 @@
 [hyperparameters]
-num_classes = 8        # クラス数（例: 4クラス分類）
+num_classes = 6        # クラス数（例: 4クラス分類）
 batch_size = 32
 epochs = 25
 img_size = 224
 learning_rate = 0.001
 
 [directory]
-data_dir = '../dataset0b/'    
-result_dir = '../dataset0b/result'
+data_dir = '../LPA-BDD-CGAN/dataset/dataset_live'    
+result_dir = '../LPA-BDD-CGAN/result/dataset_live'
 
 [gpu]
-gpu_index = 1
+gpu_index = 0
